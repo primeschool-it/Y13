@@ -1,1 +1,1 @@
-This is a text file
+print("This is a simple Text")
