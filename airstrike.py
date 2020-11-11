@@ -1,3 +1,8 @@
+"""
+A red rect will fall from top of screen
+a greeb rect has to move left or right not not collide with red rect
+"""
+
 import pygame
 import random
 import time
@@ -7,7 +12,7 @@ pygame.init()
 # Variables
 WIDTH = 800
 HEIGHT = 600
-#Colors
+# Colors
 BLACK = (0, 0, 0),
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
@@ -19,9 +24,9 @@ clock = pygame.time.Clock()
 ## Game Loop
 
 exit_game = True
-r_width = 80 #Width of red square
-g_width = 80 #Width of green square
-r_x = random.randrange(0, WIDTH- r_width) # Position of red rect to start 1st time
+r_width = 80  # Width of red square
+g_width = 80  # Width of green square
+r_x = random.randrange(0, WIDTH - r_width)  # Position of red rect to start 1st time
 r_y = 0
 r_speed = 8
 
@@ -46,7 +51,7 @@ while exit_game:
     ## reset y axis for red rect after disapparing from screen
     if r_y > 600:
         r_y = 0
-        r_x = random.randrange(0, WIDTH - r_width) # Position of red rect on reappearing on screen
+        r_x = random.randrange(0, WIDTH - r_width)  # Position of red rect on reappearing on screen
 
     ## Movements with keyboard
 
