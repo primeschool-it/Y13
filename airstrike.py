@@ -100,17 +100,21 @@ fired = False
 crashed = False
 SCORE = 0
 while exit_game:
+    keys = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit_game = False
         ## List of all pressed keys
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and pygame.KEYDOWN and not fired:
-            bullet = Bullet(spaceship.rect.midtop[0], spaceship.rect.midtop[1])
-            bullet_group.add(bullet)
-            fired = True
-        if event.type == pygame.KEYUP:
-            fired = False
+        if keys[pygame.K_SPACE]:
+            if pygame.KEYDOWN and not fired:
+                bullet = Bullet(spaceship.rect.midtop[0], spaceship.rect.midtop[1])
+                bullet_group.add(bullet)
+                fired = True
+                space_key = True
+            if event.type == pygame.KEYUP: ## Check this condition along with Space key not any key
+                ## chedk if the released key was Space Key
+                if event.key == pygame.K_SPACE:
+                    fired = False
 
     ## change position of green on pressing left or right arrow key
     if keys[pygame.K_LEFT]:
@@ -125,7 +129,7 @@ while exit_game:
         print("Score is  ....%s"%SCORE)
     if pygame.sprite.spritecollide(spaceship, asteroid_group, False):
         crashed = True
-    if not crashed and not pygame.sprite.spritecollide(spaceship, asteroid_group, False):
+    if True:#not crashed and not pygame.sprite.spritecollide(spaceship, asteroid_group, False):
         screen.blit(background_img, (0, 0))
         asteroid_group.draw(screen)
         spaceship_group.draw(screen)
