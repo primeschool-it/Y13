@@ -129,7 +129,7 @@ while exit_game:
         print("Score is  ....%s"%SCORE)
     if pygame.sprite.spritecollide(spaceship, asteroid_group, False):
         crashed = True
-    if True:#not crashed and not pygame.sprite.spritecollide(spaceship, asteroid_group, False):
+    if not crashed and not pygame.sprite.spritecollide(spaceship, asteroid_group, False):
         screen.blit(background_img, (0, 0))
         asteroid_group.draw(screen)
         spaceship_group.draw(screen)
